@@ -1,0 +1,11 @@
+{
+  "log": ["*"],
+  "databases": {
+    "db": {
+      "server": "http://$COUCHBASE_CLUSTER_IP:8091",
+      "bucket": "sync_gateway",
+      "users": { "GUEST": {"disabled": false, "admin_channels": ["*"] }
+      }
+    }
+  }
+}

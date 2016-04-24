@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: couchbase
+    role: gateway
+  name: sync-gateway
+spec:
+  replicas: 1
+  selector:
+    name: couchbase
+    role: gateway
+  template:
+    metadata:
+      labels:
+        name: couchbase
+        role: gateway
+    spec:
+      containers:
+        - name: sync-gateway
+          image: gcr.io/YOUR_PROJECT_NAME/sync_gateway
+          env:
+            - name: SYNC_GATEWAY_CONFIG
+              value: ...
+          ports:
+            - containerPort: 4984
+            - containerPort: 4985

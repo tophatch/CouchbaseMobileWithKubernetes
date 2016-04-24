@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: couchbase
+    role: database
+  name: couchbase-node
+spec:
+  replicas: 1
+  selector:
+    name: couchbase
+    role: database
+  template:
+    metadata:
+      labels:
+        name: couchbase
+        role: database
+    spec:
+      containers:
+        - name: couchbase-node
+          image: gcr.io/YOUR_PROJECT_NAME/couchbase
+          env:
+            - name: CB_REST_USERNAME
+              value: Administrator
+            - name: CB_REST_PASSWORD
+              value: change_me
+          ports:
+            - containerPort: 8091
+          readinessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/joined_cluster
+            initialDelaySeconds: 50
+            timeoutSeconds: 1
