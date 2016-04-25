@@ -104,11 +104,11 @@ The public IP for the Sync Gateway service can be found by running the following
 This is done separately as it opens the admin interface on a public IP address. Start the admin 
 service by running the following command:
 
-`kubectl create -f .\kubernetes\couchbase-admin-service.yml`
+`kubectl create -f ./kubernetes/couchbase-admin-service.yml`
 
 Run the following command a few times until you see an IP address assigned for couchbase-admin-service:
 
-`kubectl get services` 
+`kubectl get services couchbase-admin` 
 
 You can then connect to the admin interface via http://IP_ADDRESS:8091 The username is Administrator and
 the password is the one you set in "Deploying Couchbase to the cluster" above.
