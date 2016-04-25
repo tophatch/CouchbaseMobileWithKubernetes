@@ -127,7 +127,7 @@ Run the following script to stop Couchbase. NOTE: this will delete ALL of the da
 It does not stop the Sync Gateway service so that its public IP address persist between restarts. 
 You can stop this with the following command:
 
-`kubectl delete service sync-gateway`
+`kubectl delete service sync-gateway-service`
 
 # How it works
 
