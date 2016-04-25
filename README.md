@@ -76,11 +76,11 @@ At this point the two docker images have been created and stored in the Google C
 
 The minimum steps necessary to deploy to the cluster are:
 
-Open the file `.\kubernetes\couchbase-node.yml` in a text editor. Change `YOUR_PROJECT_NAME` to 
+Open the file `./kubernetes/couchbase-node.yml` in a text editor. Change `YOUR_PROJECT_NAME` to 
 the name of your GCP project. And change the password called `change_me` and replace it 
 with a non-trivial password.
 
-Open the file `.\kubernetes\couchbase-node.yml` in a text editor. Change `YOUR_PROJECT_NAME` to 
+Open the file `./kubernetes/sync-gateway.yml` in a text editor. Change `YOUR_PROJECT_NAME` to 
 the name of your GCP project.
 
 ## Starting Couchbase Server and Couchbase Sync Gateway
@@ -95,9 +95,13 @@ output:
 
 `kubectl attach $(kubectl get pods --no-headers=true -l role=gateway | grep "1/1.*Running" | awk '/sync-gateway-[a-z]*/ {print $1}')`
 
+The public IP for the Sync Gateway service can be found by running the following command:
+
+`kubectl get service sync-gateway-service`
+
 ## Opening the admin interface
 
-This is done separately as it opens the admin interface on the public internet. Start the admin 
+This is done separately as it opens the admin interface on a public IP address. Start the admin 
 service by running the following command:
 
 `kubectl create -f .\kubernetes\couchbase-admin-service.yml`

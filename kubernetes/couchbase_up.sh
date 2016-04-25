@@ -1,5 +1,9 @@
 #!/bin/bash
 
+pushd .
+
+cd kubernetes
+
 kubectl create -f couchbase-service.yml
 
 kubectl create -f couchbase-node.yml
@@ -23,7 +27,7 @@ sleep 60
 
 kubectl create -f sync-gateway-service.yml
 
-kubectl create -f ../kubernetes/sync-gateway.yml
+kubectl create -f sync-gateway.yml
 
 printf "Waiting for sync-gateway to start"
 while true ; do 
@@ -34,5 +38,7 @@ while true ; do
 	printf "."
 	sleep 2
 done
+
+popd
 
 printf "Concepts cloud is up\n"
