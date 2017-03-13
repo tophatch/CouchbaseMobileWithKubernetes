@@ -10,7 +10,7 @@ curl -v http://127.0.0.1:8091/settings/web -d port=8091 -d username=$CB_REST_USE
 curl -X POST -u $CB_REST_USERNAME:$CB_REST_PASSWORD -d name=sync_gateway -d ramQuotaMB=300 -d authType=sasl -d replicaNumber=1 http://127.0.0.1:8091/pools/default/buckets
 
 #see if there is a server live on the service already, if there is connect to it
-if timeout 30 couchbase-cli server-info --cluster=$COUCHBASE_SERVICE_HOST:$COUCHBASE_SERVICE_PORT &>/dev/null ; then
+if timeout 30 couchbase-cli server-list --cluster=$COUCHBASE_SERVICE_HOST:$COUCHBASE_SERVICE_PORT &>/dev/null ; then
 
   export IP=`hostname -I`
 
