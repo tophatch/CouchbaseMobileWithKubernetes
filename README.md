@@ -1,3 +1,5 @@
+Note that Couchbase have their own much better solution now... https://www.couchbase.com/products/cloud/kubernetes
+
 # Overview
 
 The goal of this project is develop a [Kubernetes](http://kubernetes.io/) configuration for
